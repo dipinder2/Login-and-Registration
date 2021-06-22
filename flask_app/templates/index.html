@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login/Register</title>
+</head>
+<body>
+    <h1>Login and Registration</h1>
+    <form action="/register/user" method="post">
+        <p>First Name:
+            <input type="text" name="first_name" id="">
+        </p>
+        <p>Last Name:
+            <input type="text" name="last_name" id="">
+        </p>
+        <p>Email:
+            <input type="email" name="email" id="">
+        </p>
+        <p>password:
+            <input type="password" name="password" id="">
+        </p>
+        <p>confirm password:
+            <input type="password" name="confirmPassword" id="">
+        </p>
+        <input type="submit" value="Register">
+    </form>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "register" %}
+                    <h3 style="color:rgb(177, 60, 60)">{{ message }}</h3>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form action="/login/user" method="post">
+        <p>Email:
+            <input type="email" name="email" id="">
+        </p>
+        <p>password:
+            <input type="password" name="password" id="">
+        </p>
+        <input type="submit" value="Login">
+    </form>
+    {% with  messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                {% if category == "login" %}
+                    <h3 style="color:rgb(177, 60, 60)">{{ message }}</h3>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</body>
+</html>
